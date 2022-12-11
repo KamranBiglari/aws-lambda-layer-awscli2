@@ -28,12 +28,18 @@ jobs:
         run: |-
           git add .
           git diff --staged --patch --exit-code > .repo.patch || echo "::set-output name=self_mutation_happened::true"
-      # - if: steps.self_mutation.outputs.self_mutation_happened
-      #   name: Upload patch
-      #   uses: actions/upload-artifact@v2
-      #   with:
-      #     name: .repo.patch
-      #     path: .repo.patch
+      - if: steps.self_mutation.outputs.self_mutation_happened
+        name: Upload patch
+        uses: actions/upload-artifact@v2
+        with:
+          name: .repo.patch
+          path: .repo.patch
+      - if: steps.self_mutation.outputs.self_mutation_happened
+        name: Upload layer
+        uses: actions/upload-artifact@v2
+        with:
+          name: layer.zip
+          path: src/layer.zip
       # - name: Fail build on mutation
       #   if: steps.self_mutation.outputs.self_mutation_happened
       #   run: |-
