@@ -1,0 +1,1 @@
+# -aws-lambda-layer-awscli2
