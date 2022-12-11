@@ -20,7 +20,9 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
       - name: build
-        run: src/build.sh
+        run: |
+          chmod +x src/build.sh
+          src/build.sh
       - id: self_mutation
         name: Find mutations
         run: |-
