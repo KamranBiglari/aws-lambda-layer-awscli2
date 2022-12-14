@@ -23,7 +23,7 @@ RUN yum update -y \
 
 RUN curl https://awscli.amazonaws.com/awscli-exe-linux-x86_64-${AWSCLI_VERSION}.zip -o awscli-bundle.zip
 RUN unzip awscli-bundle.zip
-RUN ./aws/install -i /opt/awscli -b /opt/awscli/aws
+RUN ./aws/install -i /opt/awscli -b /opt/awscli/
 
 # organize for self-contained usage
 # RUN mv /opt/awscli                                    /opt/awscli.tmp
